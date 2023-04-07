@@ -15,10 +15,9 @@
 int		main(int argc, char **argv)
 {
     t_stack		stk_a;
-    t_stack		stk_b;
     stk_a.size = argc - 1;
 
-
+    stk_a.stack = malloc(sizeof(int) * argc);
     if(argc < 2) {
         write(1,"you need more arguments", 23);
         return (1);
@@ -37,6 +36,6 @@ int		main(int argc, char **argv)
 
         for(int i = 0; i < stk_a.size;i++)
             printf("%d\n", stk_a.stack[i]);
-
+    free(stk_a.stack);
     return (0);
 }
