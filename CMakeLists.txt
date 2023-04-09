@@ -7,4 +7,4 @@ include_directories(.)
 
 add_executable(push_swap
         push_swap.c
-        push_swap.h push_swaputils.c)
+        push_swap.h push_swaputils.c test.c)
