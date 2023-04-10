@@ -56,6 +56,12 @@ t_stack	*ft_lstnew(int content);
 int	    ft_lstsize(t_stack *lst);
 void    free_list(t_stack *head);
 void    print_list(t_stack *head);
+int     ft_lstsize(t_stack *lst);
+void	ft_sort_int_tab(int *tab, int size);
+t_stack *swap_nodes_by_value(t_stack **head, int val1, int val2);
+t_stack *swap_nodes_by_index(t_stack **head, int index1, int index2);
+void bubble_sort(t_stack **head);
+
 
 
 

@@ -14,8 +14,11 @@
 
 int		main(int argc, char **argv)
 {
-	int i = 1;
+	int i;
+	int len;
 	t_stack *stk_a;
+
+	i = 1;
 	stk_a = NULL;
 
 	while (i != argc)
@@ -23,7 +26,33 @@ int		main(int argc, char **argv)
 		ft_lstadd_back(&stk_a, ft_lstnew(atoi(argv[i])));
 		i++;
 	}
+	printf("Original stack is : \n");
 	print_list(stk_a);
+	len = ft_lstsize(stk_a);
+
+	printf("\nStack length is %i: \n", len);
+
+
+	stk_a = swap_nodes_by_value(&stk_a, 0, 1);
+
+
+	printf("Swaping elements with content 0 and 1 places gives the following stack: \n");
+	print_list(stk_a);
+
+	stk_a = swap_nodes_by_index(&stk_a, 1, 0);
+	printf("\nSwaping elements at indexes 1 and 2 places gives the following stack: \n");
+	print_list(stk_a);
+
+	bubble_sort(&stk_a);
+	printf("\nSorted stack is: \n");
+
+	print_list(stk_a);
+
+
+
+
+
+
 	free_list(stk_a);
 	return (0);
 
