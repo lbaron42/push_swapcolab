@@ -74,7 +74,7 @@ t_stack     *swap_nodes_by_value(t_stack **head, int val1, int val2);
 t_stack     *swap_nodes_by_index(t_stack **head, int index1, int index2);
 void        bubble_sort(t_stack **head);
 int         ft_check_ll_doubles(t_stack **lst, int new);
-int         ft_error_handler_and_parser(t_stack *stk_a, int argc, char **argv);
+int         ft_error_handler_and_parser(t_stack **stk_a, int argc, char **argv);
 
 
 #endif //PUSH_SWAP_H

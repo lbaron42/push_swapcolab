@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int ft_error_handler_and_parser(t_stack *stk_a, int argc, char **argv)
+int ft_error_handler_and_parser(t_stack **stk_a, int argc, char **argv)
 {
 	int i;
 	int len;
@@ -30,16 +30,18 @@ int ft_error_handler_and_parser(t_stack *stk_a, int argc, char **argv)
 	{
 		checked_values = ft_split(argv[i], ' ');
 		checked_values_i = 0;
+//		printf("List contains\n");
+//		print_list(stk_a);
 		while (checked_values[checked_values_i] != NULL)
 		{
 			printf("Checked_values_i is %d \n", checked_values_i);
 			printf("Checked_values is %s\n", checked_values[checked_values_i]);
 			//checked_value = ft_atoi(checked_values[checked_values_i]);
 			printf("Checked_value is %d\n", (int)ft_atoi(checked_values[checked_values_i]));
-			ft_lstadd_back(&stk_a, ft_lstnew(ft_atoi(checked_values[checked_values_i])));
-			ft_check_ll_doubles(&stk_a, ft_atoi(checked_values[checked_values_i]));
-			printf("List contains\n");
-			print_list(stk_a);
+			ft_lstadd_back(stk_a, ft_lstnew(ft_atoi(checked_values[checked_values_i])));
+			ft_check_ll_doubles(stk_a, ft_atoi(checked_values[checked_values_i]));
+			printf("List contains here\n");
+			print_list(*stk_a);
 			checked_values_i++;
 		}
 		clean_ptrs(checked_values);
@@ -54,9 +56,8 @@ int		main(int argc, char **argv)
 	//int i;
 	int len;
 	t_stack *stk_a;
-	stk_a = (t_stack *)malloc(sizeof(stk_a));
-//stk_a = NULL;
-
+	// stk_a = malloc(sizeof(*stk_a));
+	stk_a = NULL;
 
 //	t_stack	*new_node;
 //
@@ -115,7 +116,7 @@ int		main(int argc, char **argv)
 //		i++;
 //	}
 
-	if (ft_error_handler_and_parser(stk_a, argc, argv) == 1)
+	if (ft_error_handler_and_parser(&stk_a, argc, argv) == 1)
 	{
 		printf("yeahhh! error handling is working");
 		return (1);
