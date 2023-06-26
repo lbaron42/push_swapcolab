@@ -111,10 +111,31 @@ void free_list(t_stack *head)
 
 void print_list(t_stack *head)
 {
-	// printf("the correct answer is : \n");
 	while (head != NULL) {
 		printf("%d ", head->content);
 		head = head->next;
 	}
 }
+
+int ft_check_ll_doubles(t_stack **lst, int new)
+{
+	t_stack	*temp;
+
+	temp = *lst;
+	if (*lst == NULL)
+	{
+	return (0);
+	}
+	while (temp->next != NULL)
+	{
+		if (temp->content == new)
+		{
+			ft_putstr_fd("Found a double! Try again", 1);
+			return (1);
+		}
+		temp = temp->next;
+	}
+	return (0);
+}
+
 
