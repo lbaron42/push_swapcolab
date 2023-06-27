@@ -54,8 +54,10 @@ t_stack	*ft_lstnew(int content)
 	t_stack	*new_node;
 
 	new_node = (t_stack *)malloc(sizeof(*new_node));
-	if (!new_node)
+	if (!new_node) {
+		free(new_node);
 		return (NULL);
+	}
 	new_node->content = content;
 	new_node->next = NULL;
 	return (new_node);

@@ -162,17 +162,17 @@ char	**ft_split(char const *s, char c)
 	array[y] = 0;
 	return (array);
 }
-
-char	**ft_free_split(char **strs)
-{
-	int i;
-
-	i = 0;
-	while (strs[i] != (void *)0)
-		free(strs[i]);
-	free(strs);
-	return (NULL);
-}
+//
+//char	**ft_free_split(char **strs)
+//{
+//	int i;
+//
+//	i = 0;
+//	while (strs[i] != (void *)0)
+//		free(strs[i]);
+//	free(strs);
+//	return (NULL);
+//}
 
 void	clean_ptrs(char **double_ptr)
 {
@@ -187,7 +187,7 @@ void	clean_ptrs(char **double_ptr)
 	free(double_ptr);
 }
 
-long long ft_atoi(const char *str)
+long long ft_long_long_atoi(const char *str)
 {
 	unsigned int	str_c;
 	long long   	result;
@@ -208,10 +208,40 @@ long long ft_atoi(const char *str)
 		str_c++;
 	while (str[str_c] != '\0')
 	{
-		if (str[str_c] < 48 || str[str_c] > 57)
+		while (str[str_c] >= 48 && str[str_c] <= 57)
 		{
-			ft_putstr_fd("Not a number!", 1);
-			exit(1);
+			result = result * 10 + str[str_c] - '0';
+			str++;
+		}
+	}
+	return (result * positive);
+}
+
+int ft_number_checker(const char *str)
+{
+	unsigned int	str_c;
+	long long       result;
+	int				positive;
+
+	str_c = 0;
+	positive = 1;
+	result = 0;
+	while (str[str_c] == 32 || (str[str_c] >= 9
+	                            && str[str_c] <= 13))
+		str_c++;
+	if (str[str_c] == 45)
+	{
+		positive = -1;
+		str_c++;
+	}
+	else if (str[str_c] == 43)
+		str_c++;
+	while (str[str_c] != '\0')
+	{
+		if (str[str_c] < '0' || str[str_c] > '9')
+		{
+			ft_putstr_fd("Number checker says Not a number!", 1);
+			return (1);
 		}
 		while (str[str_c] >= 48 && str[str_c] <= 57)
 		{
@@ -221,8 +251,8 @@ long long ft_atoi(const char *str)
 	}
 	if (result * positive > INT_MAX || result * positive < INT_MIN)
 	{
-		ft_putstr_fd("Value outside of INT range! Try again", 1);
-		exit(1);
+		ft_putstr_fd("Number checker says Value outside of INT range! Try again", 1);
+		return (1);
 	}
-	return (result * positive);
+	return (0);
 }

@@ -114,8 +114,6 @@ void bubble_sort(t_stack **head) {
 	}
 
 	int swapped;
-	t_stack *ptr1 = *head;
-	t_stack *lptr = NULL;
 
 	swapped = 1;
 	t_stack *prev = NULL;

@@ -56,7 +56,7 @@ void        clean_ptrs(char **double_ptr);
 size_t      ft_strlen(const char *str);
 char        *ft_substr(char const *s, unsigned int start, size_t len);
 int         ft_isdigit2(const char *str);
-long long   ft_atoi(const char *str);
+long long   ft_long_long_atoi(const char *str);
 void        ft_lstadd_back(t_stack **lst, t_stack *new);
 void        ft_lstadd_front(t_stack **lst, t_stack *new);
 void        ft_lstclear(t_stack **lst, void (*del)(void *));
@@ -75,6 +75,8 @@ t_stack     *swap_nodes_by_index(t_stack **head, int index1, int index2);
 void        bubble_sort(t_stack **head);
 int         ft_check_ll_doubles(t_stack **lst, int new);
 int         ft_error_handler_and_parser(t_stack **stk_a, int argc, char **argv);
+int         ft_number_checker(const char *str);
+
 
 
 #endif //PUSH_SWAP_H
